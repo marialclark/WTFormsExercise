@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Adopt Home{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column" style="min-height: 90vh;">
+  <h1 class="display-4 text-center">Pets</h1>
+  
+  <div class="row justify-content-center">
+    {% for pet in pets %}
+      <div class="col-3 py-3 text-center">
+        <img class="img-thumbnail" src="{{ pet.pet_img() }}">
+        <div>
+          <a href="/{{ pet.id }}">{{ pet.name }}</a>
+          {% if pet.available %}
+            <b>Available</b>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="mt-auto d-flex justify-content-center">
+  <a class="btn btn-primary" href="/add">Add Pet</a>
+</div>
+{% endblock %}
